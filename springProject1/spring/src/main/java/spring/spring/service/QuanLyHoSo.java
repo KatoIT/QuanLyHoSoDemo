@@ -1,9 +1,11 @@
-package spring.spring;
+package spring.spring.service;
 
 import java.util.*;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
+import spring.spring.domain.entities.HoSo;
+import spring.spring.domain.entities.NguyenVong;
 
 @RestController
 @Log4j2

@@ -1,4 +1,4 @@
-package spring.spring;
+package spring.spring.domain.entities;
 
 import lombok.extern.log4j.Log4j2;
 

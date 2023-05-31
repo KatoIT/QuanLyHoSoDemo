@@ -11,22 +11,22 @@ public interface HoSoRepo {
 
     Boolean updateHoSo(List<HoSo> hoSo);
 
-    Boolean deleteHoSo(String maHoSo);
+    Boolean deleteHoSo(int maHoSo);
 
-    Boolean deleteHoSo(List<String> maHoSo);
+    Boolean deleteHoSo(List<Integer> maHoSo);
 
     List<HoSo> getAllHoSo();
 
-    List<HoSo> findHoSoByMaHoSo();
-
-    List<HoSo> findHoSoByMaHoSoIn();
-
-    List<HoSo> findHoSoByThuTuNguyenVong();
-
-    List<HoSo> findHoSoBySoCCCD();
-
-    List<HoSo> findHoSoByMaHocSinh();
-
-    List<HoSo> findHoSoByTenHocSinh();
+//    List<HoSo> findHoSoByMaHoSo();
+//
+//    List<HoSo> findHoSoByMaHoSoIn();
+//
+//    List<HoSo> findHoSoByThuTuNguyenVong();
+//
+//    List<HoSo> findHoSoBySoCCCD();
+//
+//    List<HoSo> findHoSoByMaHocSinh();
+//
+//    List<HoSo> findHoSoByTenHocSinh();
 
 }

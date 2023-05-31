@@ -7,6 +7,7 @@ import spring.spring.domain.response.BaseResponse;
 
 import java.util.ArrayList;
 import java.util.List;
+import spring.spring.domain.repo.Repository;
 
 @Log4j2
 @RestController

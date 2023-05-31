@@ -30,9 +30,7 @@ public class QuanLyHoSo {
 
     @PostMapping("/hoSo")
     public HoSo addHoSo(@RequestBody HoSo hoSo) {
-//        log.info();("Thêm hồ sơ mới: ");
-//        HoSo newHoSo = new HoSo(++maHoSoMoi, maHocSinh, hoTenHocSinh, age, cccd, nguyenVongList, queQuan, diaChiThuongTru);
-//        String dataTest = "{"maHoSo":1, "maHocSinh":"PH23541", "hoTenHocSinh":"Hoang Tuan", "tuoi":20, "cccd":"123456789123", "listNguyenVong":{"thuTu":1, "maNganh": "IT123", "tenNganh": "CNTT", "maTruong": "ABC", "tenTruong": "Phu Ly B"}}";
+
         listHoSo.add(hoSo);
         return hoSo;
     }

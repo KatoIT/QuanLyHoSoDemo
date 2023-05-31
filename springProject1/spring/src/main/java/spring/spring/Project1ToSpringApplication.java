@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Log4j2
 @SpringBootApplication
 public class Project1ToSpringApplication {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 //		QuanLyHoSo test = new QuanLyHoSo();
-		SpringApplication.run(Project1ToSpringApplication.class, args);
-		log.info("Hello World!");
-	}
+        SpringApplication.run(Project1ToSpringApplication.class, args);
+        log.info("Hello World!");
+    }
 
 }

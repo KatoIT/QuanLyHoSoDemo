@@ -4,15 +4,22 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 import spring.spring.domain.entities.HoSo;
 import spring.spring.domain.response.BaseResponse;
+import spring.spring.service.HoSoService;
+import spring.spring.service.HoSoServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import spring.spring.domain.repo.Repository;
 
 @Log4j2
 @RestController
 @RequestMapping("/hoso")
 public class HomeController {
+    private final HoSoService hoSoService;
+
+    HomeController(HoSoServiceImpl hoSoService) {
+        this.hoSoService = hoSoService;
+    }
+
     List<HoSo> hoSoList = new ArrayList<>();
 
     @PostMapping("/create")

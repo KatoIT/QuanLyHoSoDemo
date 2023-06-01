@@ -4,11 +4,14 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import spring.spring.domain.entities.HoSo;
+import spring.spring.domain.entities.NguyenVong;
 import spring.spring.domain.repo.HoSoRepo;
 import spring.spring.domain.repo.HoSoRepoImpl;
 import spring.spring.domain.response.BaseResponse;
 
+import java.util.ArrayList;
 import java.util.List;
+
 @Log4j2
 @Service
 public class HoSoServiceImpl implements HoSoService {
@@ -24,6 +27,7 @@ public class HoSoServiceImpl implements HoSoService {
     public List<HoSo> getData() {
         return hoSoRepo.getAllHoSo();
     }
+
     @Override
     public BaseResponse insertHoSo(HoSo hoSo) {
         BaseResponse response = new BaseResponse();
@@ -63,6 +67,7 @@ public class HoSoServiceImpl implements HoSoService {
         }
         return response;
     }
+
     @Override
     public BaseResponse deleteHoSo(List<Integer> listMaHoSo) {
         BaseResponse response = new BaseResponse();
@@ -89,15 +94,16 @@ public class HoSoServiceImpl implements HoSoService {
         if (hoSo.getMaHoSo() < 0) {
             log.info("Mã hồ sơ ko hợp lệ!");
             result = false;
-        } else {
-            for (HoSo hoso :
-                    hoSoList) {
-                if (hoSo.getMaHoSo() == hoso.getMaHoSo()) {
-                    log.info("Mã hồ sơ đã tồn tại!");
-                    result = false;
-                }
-            }
         }
+//        else {
+//            for (HoSo hoso :
+//                    hoSoList) {
+//                if (hoSo.getMaHoSo() == hoso.getMaHoSo()) {
+//                    log.info("Mã hồ sơ đã tồn tại!");
+//                    result = false;
+//                }
+//            }
+//        }
         if (!hoSo.getMaHocSinh().matches("[A-Z]{2}[1-9]{5}")) {
             log.info("Mã học sinh ko hợp lệ!");
             result = false;
@@ -134,15 +140,78 @@ public class HoSoServiceImpl implements HoSoService {
         }
         return result;
     }
+
     @Override
     public boolean checkMaHoSo(int maHoSo, List<HoSo> listHoSo) {
         for (HoSo hoSo :
-                listHoSo ) {
+                listHoSo) {
             if (hoSo.getMaHoSo() == maHoSo) {
                 listHoSo.remove(hoSo);
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public HoSo findHoSoByMaHoSo(int maHoSo, List<HoSo> hoSoList) {
+        for (HoSo hoSo :
+                hoSoList) {
+            if (hoSo.getMaHoSo() == maHoSo) {
+                return hoSo;
+            }
+        }
+        log.info("Ko tìm thấy hồ sơ nào!");
+        return null;
+    }
+
+    @Override
+    public List<HoSo> findHoSoByThuTuNguyenVong(String maTruong, int thuTuNguyenVong, List<HoSo> hoSoList) {
+        List<HoSo> hoSoTimThay = new ArrayList<>();
+        for (HoSo hoSo : hoSoList
+        ) {
+            for (NguyenVong nguyenVong :
+                    hoSo.getListNguyenVong()) {
+                if (nguyenVong.getMaTruong().equals(maTruong) && nguyenVong.getThuTu() == thuTuNguyenVong) {
+                    hoSoTimThay.add(hoSo);
+                    break;
+                }
+            }
+        }
+        return hoSoTimThay;
+    }
+
+    @Override
+    public HoSo findHoSoBySoCCCD(String cccd, List<HoSo> hoSoList) {
+        for (HoSo hoSo :
+                hoSoList) {
+            if (hoSo.getCccd().equals(cccd)) {
+                return hoSo;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public HoSo findHoSoByMaHocSinh(String maHocSinh, List<HoSo> hoSoList) {
+        for (HoSo hoSo :
+                hoSoList) {
+            if (hoSo.getMaHocSinh().equals(maHocSinh)) {
+                return hoSo;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<HoSo> findHoSoByTenHocSinh(String hoTenHocSinh, List<HoSo> hoSoList) {
+        List<HoSo> hoSoTimThay = new ArrayList<>();
+        for (HoSo hoSo :
+                hoSoList) {
+            if (hoSo.getHoTenHocSinh().equals(hoTenHocSinh)) {
+                hoSoTimThay.add(hoSo);
+            }
+        }
+        return hoSoTimThay;
     }
 }

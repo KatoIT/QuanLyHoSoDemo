@@ -47,4 +47,19 @@ public class HomeController {
     public BaseResponse deleteMany(@RequestParam List<Integer> listMaHoSo) {
         return hoSoService.deleteHoSo(listMaHoSo);
     }
+
+    @GetMapping("/findByMaHoSo")
+    public HoSo findByMaHoSo(@RequestParam int maHoSo) {
+        return hoSoService.findHoSoByMaHoSo(maHoSo, hoSoService.getData());
+    }
+
+    @GetMapping("/findByNguyenVong")
+    public List<HoSo> findHoSoByThuTuNguyenVong(@RequestParam String maTruong, @RequestParam int thuTuNguyenVong) {
+        return hoSoService.findHoSoByThuTuNguyenVong(maTruong, thuTuNguyenVong, hoSoService.getData());
+    }
+
+    @GetMapping("/findByCccd")
+    public HoSo findByCccd(@RequestParam String soCccd) {
+        return hoSoService.findHoSoBySoCCCD(soCccd, hoSoService.getData());
+    }
 }

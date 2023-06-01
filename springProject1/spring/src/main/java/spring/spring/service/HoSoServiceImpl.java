@@ -166,6 +166,22 @@ public class HoSoServiceImpl implements HoSoService {
     }
 
     @Override
+    public List<HoSo> findHoSoByMaHoSoIn(List<HoSo> hoSoList, int[] listMaHoSo) {
+        List<HoSo> hoSoTimThay = new ArrayList<>();
+        for (int maHoSo :
+                listMaHoSo) {
+            for (HoSo hoSo :
+                    hoSoList) {
+                if (hoSo.getMaHoSo() == maHoSo) {
+                    hoSoTimThay.add(hoSo);
+                    break;
+                }
+            }
+        }
+        return hoSoTimThay;
+    }
+
+    @Override
     public List<HoSo> findHoSoByThuTuNguyenVong(String maTruong, int thuTuNguyenVong, List<HoSo> hoSoList) {
         List<HoSo> hoSoTimThay = new ArrayList<>();
         for (HoSo hoSo : hoSoList

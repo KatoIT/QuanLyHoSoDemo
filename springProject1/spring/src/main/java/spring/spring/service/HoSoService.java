@@ -28,7 +28,7 @@ public interface HoSoService {
     //    BaseResponse findAllHoSo();
     HoSo findHoSoByMaHoSo(int maHoSo, List<HoSo> hoSoList);
 
-//    List<HoSo> findHoSoByMaHoSoIn();
+    List<HoSo> findHoSoByMaHoSoIn(List<HoSo> hoSoList, int[] maHoSo);
 
     List<HoSo> findHoSoByThuTuNguyenVong(String maTruong, int thuTuNguyenVong, List<HoSo> hoSoList);
 
